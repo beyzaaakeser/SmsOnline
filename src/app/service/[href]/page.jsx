@@ -14,9 +14,10 @@ const page = async ({ params }) => {
       <div className="flex max-lg:flex-col pt-6 min-h-[65vh]">
         <div className="flex flex-col lg:flex-[5] justify-evenly max-lg:text-center">
           <div className="flex flex-col gap-4 pr-4 ">
-            <h2 className="text-[clamp(2.5rem,3.5vw,6rem)] font-semibold max-lg:px-10 ">
+            <h2 className="text-4xl font-semibold max-lg:px-10 ">
               Temp Number for{' '}
-              <span className="text-orange-500">{service.title}</span>
+              <br />
+              <span className="text-orange-500 text-2xl ">{service.title}</span>
             </h2>
             <p className="text-gray-600 text-[clamp(1.1rem,1vw,2rem)] max-lg:px-4 pr-4">
               Create a {service.title} account without providing your real
