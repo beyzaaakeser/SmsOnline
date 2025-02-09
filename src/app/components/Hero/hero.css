@@ -1,0 +1,43 @@
+.circle1 {
+  border-radius: 37% 63% 64% 36% / 41% 45% 55% 59%;
+  background: rgb(184, 187, 192);
+  background: radial-gradient(
+    circle,
+    rgb(238, 237, 237) 0%,
+    rgb(245, 245, 245) 100%
+  );
+  width: 80%;
+  height: 80%;
+}
+.circle2 {
+  border-radius: 69% 31% 50% 50% / 67% 37% 63% 33%;
+  background: rgb(184, 187, 192);
+  background: radial-gradient(
+    circle,
+    rgb(238, 237, 237) 0%,
+    rgb(245, 245, 245) 100%
+  );
+  width: 60%;
+  height: 70%;
+  right: 20px;
+  bottom: 30px;
+}
+.circle3 {
+  border-radius: 36% 64% 50% 50% / 47% 44% 56% 53%;
+  background: rgb(184, 187, 192);
+  background: radial-gradient(
+    circle,
+    rgb(238, 237, 237) 0%,
+    rgb(245, 245, 245) 100%
+  );
+  width: 60%;
+  height: 70%;
+  left: 0px;
+  bottom: 80px;
+}
+
+@media screen and (min-width: 1440px) {
+  #hero {
+    height: 65vh !important;
+  }
+}
