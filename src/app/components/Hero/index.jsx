@@ -32,7 +32,13 @@ const Hero = () => {
           <div className="absolute bg-gray-400 circle2 opacity-50 z-0 max-lg:hidden"></div>
 
           <div className=" w-full h-full inset-0 flex justify-center items-center relative z-3">
-            <video src="/images/video.webm" autoPlay loop muted></video>
+            <video
+              src="/images/video.webm"
+              autoPlay
+              loop
+              muted
+              className="pointer-events-none"
+            ></video>
           </div>
         </div>
         <div className="flex items-center gap-4 max-lg:flex-col max-lg:w-full max-lg:px-4 lg:hidden">
