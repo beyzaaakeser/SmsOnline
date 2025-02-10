@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className=" w-full">
       <div className="container flex flex-row justify-between items-center h-[96px] max-lg:px-2">
         <div className="flex items-center gap-4">
-          <Image src="/images/icon.png" alt="icon" width={40} height={40} />
+          <Link href={"/"}><Image src="/images/icon.png" alt="icon" width={40} height={40} /></Link>
           <Link
             href={'/'}
             className="flex flex-col max-lg:hidden cursor-pointer"
