@@ -5,7 +5,7 @@ import './hero.css';
 
 const Hero = () => {
   return (
-    <div id='hero' className="flex max-lg:flex-col pt-6 min-h-[65vh]">
+    <div id="hero" className="flex max-lg:flex-col pt-6 min-h-[65vh]">
       <div className="flex flex-col lg:flex-[5] justify-evenly max-lg:text-center">
         <div className="flex flex-col gap-4 pr-4 ">
           <h2 className="text-[clamp(2rem,3vw,6rem)] font-semibold max-lg:px-10 ">
@@ -32,7 +32,7 @@ const Hero = () => {
           <div className="absolute bg-gray-400 circle2 opacity-50 z-0 max-lg:hidden"></div>
 
           <div className=" w-full h-full inset-0 flex justify-center items-center relative z-10">
-            <video src="/images/video.webm"></video>
+            <video src="/images/video.webm" autoPlay loop muted></video>
           </div>
         </div>
         <div className="flex items-center gap-4 max-lg:flex-col max-lg:w-full max-lg:px-4 lg:hidden">
