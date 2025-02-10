@@ -34,7 +34,7 @@ const Hero = () => {
           <div className=" w-full h-full inset-0 flex justify-center items-center relative z-3">
             <video
               src="/images/video.webm"
-              autoPlay
+      
               loop
               muted
               className="pointer-events-none"
