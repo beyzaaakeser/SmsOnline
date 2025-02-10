@@ -7,7 +7,7 @@ const Features = () => {
     <div className="my-20">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-5xl font-semibold">Features</h2>
-        <p className="text-gray-500 w-[600px] text-center">
+        <p className="text-gray-500 w-[380px] lg:w-[600px] text-center ">
           Temp Number offers short-term usage phone numbers from different
           countries to receive SMS messages at fair and affordable prices
         </p>
