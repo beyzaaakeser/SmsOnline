@@ -33,8 +33,8 @@ const page = async ({ params }) => {
             <div className="absolute bg-gray-200 circle1 opacity-50 z-0 max-lg:hidden"></div>
             <div className="absolute bg-gray-400 circle2 opacity-50 z-0 max-lg:hidden"></div>
 
-            <div className=" w-full h-full inset-0 flex justify-center items-center relative z-10">
-              <video src="/images/video.webm"  loop muted className='pointer-events-none'></video>
+            <div className=" w-full h-full inset-0 flex justify-center items-center relative z-10 user-select-none">
+              <video src="/images/video.webm" autoPlay loop muted className='pointer-events-none user-select-none'></video>
             </div>
           </div>
         </div>
