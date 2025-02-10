@@ -15,7 +15,10 @@ const Navbar = () => {
       <div className="container flex flex-row justify-between items-center h-[96px] max-lg:px-2">
         <div className="flex items-center gap-4">
           <Image src="/images/icon.png" alt="icon" width={40} height={40} />
-          <Link href={"/"} className="flex flex-col max-lg:hidden cursor-pointer">
+          <Link
+            href={'/'}
+            className="flex flex-col max-lg:hidden cursor-pointer"
+          >
             <h1 className="font-medium text-[21px] p-0 m-0">Temp Number</h1>
             <p className="text-gray-500 p-0 m-0 text-[14px]">
               receive sms online
@@ -25,7 +28,7 @@ const Navbar = () => {
         <div
           className={`
       flex bg-white right-0 gap-10 
-      backdrop-blur-[2px] bg-opacity-5
+      backdrop-blur-[2px] bg-opacity-5 z-[9] relative
       ${open ? 'offcanvas lg:hidden' : 'max-lg:hidden'}
     `}
         >
@@ -39,6 +42,12 @@ const Navbar = () => {
       
             `}
           >
+            <div
+              onClick={() => setOpen(false)}
+              className="flex justify-end w-full"
+            >
+              <IoMdClose className="text-xl text-gray-500 relative z-[99] " />
+            </div>
             <DropMenu title="Product" menuItems={menuItems} />
             <DropMenu title="Resources" menuItems={menuItems2} />
             <Link href={'/'} className="px-2">
@@ -50,7 +59,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-3 relative z-[50]">
+        <div className="flex justify-center items-center gap-3 relative z-[1]">
           <div className="">
             <div className="flex items-center gap-2 max-lg:hidden">
               <div className="border min-h-[50px] min-w-[120px] flex justify-center items-center rounded-xl cursor-pointer hover:bg-gray-50">
@@ -81,9 +90,9 @@ const Navbar = () => {
             className="lg:hidden size-9 flex justify-center rounded-lg items-center border border-gray-300 relative z-[99]"
           >
             {open ? (
-              <IoMdClose className="text-xl text-gray-500" />
+              <IoMdClose className="text-xl text-gray-500 relative z-[99]" />
             ) : (
-              <MdOutlineMenu className="text-xl text-gray-500" />
+              <MdOutlineMenu className="text-xl text-gray-500 relative z-[99]" />
             )}
           </div>
         </div>
