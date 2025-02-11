@@ -2,7 +2,7 @@ import React from 'react';
 
 const UseCard = ({ item }) => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-12 min-w-[400px] bg-white rounded-3xl p-12">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-12 min-w-[380px] max-sm:mx-2 bg-white rounded-3xl p-12">
       <div>
         <img src={item.image} alt="" className="w-[100px]" />
       </div>

@@ -1,20 +1,19 @@
 import { clients, inputs, outputs, process } from '@/app/utils/WorksInput';
 import React from 'react';
 import Inputs from './Inputs';
-import "./works.css"
+import './works.css';
 
 import Inputs2 from './Inputs2';
+import Title from '../SectionsTitle';
 const HowItWorks = () => {
   return (
     <div className="bg-gray-100 mt-10 py-32 px-8">
-      <div className="flex flex-col justify-center items-center gap-4">
-        <h2 className="text-3xl lg:text-5xl text-center font-semibold">How it works</h2>
-        <p className="text-gray-500 lg:w-[600px] text-center">
-          The following diagram illustrates how our product works behind the
-          scenes. Despite the simple user interface, the backbone is extremely
-          sophisticated and complex.
-        </p>
-      </div>
+      <Title
+        title={'How it works'}
+        info={
+          '  The following diagram illustrates how our product works behind the scenes. Despite the simple user interface, the backbone is extremely sophisticated and complex.'
+        }
+      />
 
       <div className="flex gap-20 mt-20 container scrollCard ">
         <div className="">

@@ -5,7 +5,7 @@ import './hero.css';
 
 const Hero = () => {
   return (
-    <div id="hero" className="flex max-lg:flex-col pt-6 min-h-[65vh]">
+    <section id="hero" className="flex max-lg:flex-col pt-6 min-h-[65vh]">
       <div className="flex flex-col lg:flex-[5] justify-evenly max-lg:text-center">
         <div className="flex flex-col gap-4 pr-4 ">
           <h2 className="text-[clamp(2rem,3vw,6rem)] font-semibold max-lg:px-10 ">
@@ -51,7 +51,7 @@ const Hero = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

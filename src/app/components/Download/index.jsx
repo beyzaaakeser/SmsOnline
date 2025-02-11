@@ -4,8 +4,8 @@ import { BiWorld } from 'react-icons/bi';
 
 const Download = () => {
   return (
-    <div className="container rounded-3xl my-32 max-md:mt-[1300px] max-lg:mt-[800px]  bg-orange-400 max-lg:h-[900px] lg:h-[400px] text-white">
-      <div className="flex flex-col lg:flex-row p-16">
+    <div className="container rounded-3xl my-32 max-md:mt-[1300px] max-lg:mt-[800px]  bg-orange-400 max-lg:h-[900px] lg:h-[400px] text-white ">
+      <div className="flex flex-col lg:flex-row max-lg:pt-16 p-8 lg:p-16">
         <div className="flex flex-1 flex-col gap-3">
           <h2 className="text-[26px] font-semibold">Download - Get it now</h2>
           <p className="text-[18px] lg:pr-24 leading-relaxed">

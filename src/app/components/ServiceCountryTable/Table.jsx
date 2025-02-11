@@ -117,7 +117,7 @@ const Table = () => {
             <CiSearch className="text-orange-500" />
             <span>Search for more</span>
           </Link>
-          <p className="text-gray-500 lg:w-[95%]">
+          <p className="text-gray-500 lg:w-[95%] max-sm:px-4">
             You will be able to view the price per action after selecting the
             service and country
           </p>

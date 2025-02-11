@@ -3,7 +3,7 @@ import Button from '../Button';
 
 const PowefulApi = () => {
   return (
-    <div className="container bg-white mt-52 flex flex-col lg:flex-row justify-center gap-20 h-[50vh] max-sm:mt-96 max-lg:mt-80 px-4 ">
+    <div className="container bg-white mt-52 mb-44 flex flex-col lg:flex-row justify-center gap-20 h-[50vh] max-sm:mt-96 max-lg:mt-80 px-4 ">
       <div className="lg:w-1/2 flex max-lg:justify-center max-lg:items-center">
         <img src="/images/code.webp" alt="" width={450} />
       </div>

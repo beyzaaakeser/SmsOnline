@@ -1,18 +1,16 @@
 import { cards } from '@/app/utils/ReviewCard';
 import React from 'react';
+import Title from '../SectionsTitle';
 
 const Review = () => {
   return (
     <div className="container">
-      <div className="flex flex-col justify-center items-center gap-6 mb-20">
-        <h2 className="text-3xl lg:text-5xl text-center font-semibold">
-          Our clients reviews
-        </h2>
-        <p className="text-gray-500 lg:max-w-[650px] text-center px-5">
-          Over 100,000 paid customers rely on our services and counting....
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[600px]">
+      <Title
+        title={'Our clients reviews'}
+        containerDesign={"pb-20"}
+        info={`  Over 100,000 paid customers rely on our services and counting....`}
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[600px] px-3 sm:px-2">
         {cards.map((card, index) => (
           <div key={card.image} className="border rounded-3xl p-8">
             <div className="border-b flex items-center gap-8 pb-8">

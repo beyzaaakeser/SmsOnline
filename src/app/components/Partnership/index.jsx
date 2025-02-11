@@ -59,11 +59,11 @@ const Partnership = () => {
         </div>
       </div>
 
-      <div className="lg:w-1/2 ">
-        <div className="flex items-center justify-center gap-4 md:gap-16 ">
+      <div className="lg:w-1/2 px-3 ">
+        <div className="flex items-center justify-center gap-3 md:gap-16">
           <div
             onClick={handleSuppliers}
-            className={`flex items-center justify-center gap-2 font-medium cursor-pointer pb-3 ${
+            className={`flex items-center justify-center gap-1 sm:gap-2 font-medium cursor-pointer pb-3 ${
               suppliers
                 ? 'text-orange-500 border-b-4 border-orange-500 rounded-md'
                 : ''
@@ -74,7 +74,7 @@ const Partnership = () => {
           </div>
           <div
             onClick={handleSoftware}
-            className={`flex items-center justify-center gap-2 font-medium cursor-pointer pb-3 ${
+            className={`flex items-center justify-center  gap-1 sm:gap-2 font-medium cursor-pointer pb-3 ${
               software
                 ? 'text-orange-500 border-b-4 border-orange-500 rounded-md'
                 : ''
@@ -85,7 +85,7 @@ const Partnership = () => {
           </div>
           <div
             onClick={handleAffiliates}
-            className={`flex items-center justify-center gap-2 font-medium cursor-pointer pb-3 ${
+            className={`flex items-center justify-center  gap-1 sm:gap-2 font-medium cursor-pointer pb-3 ${
               affiliates
                 ? 'text-orange-500 border-b-4 border-orange-500 rounded-md'
                 : ''
