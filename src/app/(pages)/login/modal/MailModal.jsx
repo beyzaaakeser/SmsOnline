@@ -24,7 +24,7 @@ const MailModal = ({ isOpen, close }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} close={close}>
+    <Modal isOpen={isOpen} close={close} designs={"bg-orange-500 !max-w-[600px]"} >
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <h1 className="text-3xl">Forgot Password ?</h1>
         <p className="text-gray-700 ">

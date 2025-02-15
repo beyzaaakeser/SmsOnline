@@ -2,11 +2,12 @@ import React from 'react';
 import Button from '../Button';
 import { FaCirclePlay } from 'react-icons/fa6';
 import './hero.css';
+import WatchVideo from './WatchVideo';
 
 const Hero = () => {
   return (
-    <section id="hero" className="flex max-lg:flex-col pt-6 min-h-[65vh]">
-      <div className="flex flex-col lg:flex-[5] justify-evenly max-lg:text-center">
+    <section id="hero" className="flex max-lg:flex-col pt-6 min-h-[65vh] ">
+      <div className="flex flex-col lg:flex-[5] justify-evenly max-lg:text-center relative">
         <div className="flex flex-col gap-4 pr-4 ">
           <h2 className="text-[clamp(2rem,3vw,6rem)] font-semibold max-lg:px-10 ">
             Temp Number Second Phone
@@ -16,14 +17,12 @@ const Hero = () => {
             over the world
           </p>
         </div>
-        <div className="flex items-center gap-4 max-lg:flex-col max-lg:w-full max-lg:px-4 max-lg:hidden">
+        <div className="flex  items-center gap-4 max-lg:flex-col max-lg:w-full max-lg:px-4 max-lg:hidden">
           <Button
             title={'Try Now'}
             designs={'w-full sm:w-[60%] lg:w-[160px]'}
           />
-          <button className="flex justify-center items-center gap-2 text-orange-600 border border-orange-600 h-[50px] w-full sm:w-[60%] lg:w-[160px] rounded-md hover:shadow-lg">
-            <FaCirclePlay /> Watch Video
-          </button>
+          <WatchVideo />
         </div>
       </div>
       <div className="flex  flex-col lg:flex-[7] gap-8">
@@ -46,9 +45,7 @@ const Hero = () => {
             title={'Try Now'}
             designs={'w-full sm:w-[60%] lg:w-[160px]'}
           />
-          <button className="flex justify-center items-center gap-2 text-orange-600 border border-orange-600 h-[50px] w-full sm:w-[60%] lg:w-[160px] rounded-md hover:shadow-lg">
-            <FaCirclePlay /> Watch Video
-          </button>
+          <WatchVideo />
         </div>
       </div>
     </section>
