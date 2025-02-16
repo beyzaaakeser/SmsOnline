@@ -1,16 +1,15 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get('type'); // URL parametresi ile API türünü belirle
-  console.log(type);
+  const token = process.env.NEXT_PUBLIC_API_KEY;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
   let apiUrl;
 
   if (type === 'services') {
-    apiUrl =
-      'https://api.sms-man.com/control/applications?token=eZ0k04v_NIsO7ZEMBcrMjrrFk447ZmlT';
+    apiUrl = `${apiURL}/applications?token=${token}`;
   } else {
-    apiUrl =
-      'https://api.sms-man.com/control/countries?token=eZ0k04v_NIsO7ZEMBcrMjrrFk447ZmlT';
+    apiUrl = `${apiURL}/control/countries?token=${token}`;
   }
 
   try {
