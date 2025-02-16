@@ -1,0 +1,16 @@
+.radio-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #F97316;
+  cursor: pointer;
+  margin: 5px;
+}
+.radio-box.selected {
+  background-color: #F97316;
+  color: white;
+  border-color: #F97316;
+}

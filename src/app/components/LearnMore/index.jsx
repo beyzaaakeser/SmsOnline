@@ -40,7 +40,7 @@ const LearnMore = () => {
         </div>
 
         <div className="flex justify-center items-center mt-20">
-          <Button title="Visit blog" designs={'w-[160px] rounded-[15px]'} />
+          <Button title="Visit blog" designs={'w-[160px] rounded-[15px]'} href={"/"} />
         </div>
       </div>
     </div>

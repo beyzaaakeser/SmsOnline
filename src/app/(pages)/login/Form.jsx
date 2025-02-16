@@ -26,19 +26,22 @@ const Form = () => {
     if (isSignUp) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((cred) => {
-          setDoc(doc(db, 'users', cred.user.uid), {
-            email: email,
-            password: password,
-            role: 'USER',
-            createdAt: Timestamp.fromDate(new Date()),
-          })
+          setDoc(
+            doc(db, 'users', cred.user.uid),
+            {
+              email: email,
+              password: password,
+              role: 'USER',
+              createdAt: Timestamp.fromDate(new Date()),
+            },
+            router.replace('/')
+          )
             .then(() => {
               toast.success('Your account has been created. You can log in');
               setName('');
               setEmail('');
               setPassword('');
               setError('');
-              router.replace('/');
             })
             .catch((err) => setError(err.message));
         })

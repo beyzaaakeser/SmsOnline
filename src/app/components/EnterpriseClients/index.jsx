@@ -31,8 +31,12 @@ const Enterprise = () => {
             </ul>
           </div>
         </div>
-        <div className='max-sm:mt-6'>
-          <Button title="Contact Us" designs={'w-[180px] rounded-xl'} />
+        <div className="max-sm:mt-6">
+          <Button
+            title="Contact Us"
+            designs={'w-[180px] rounded-xl'}
+            href={'/'}
+          />
         </div>
       </div>
 

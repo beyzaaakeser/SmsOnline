@@ -23,7 +23,7 @@ const Navbar = () => {
     return () => unSub();
   }, []);
 
-/*   console.log(user);
+  /*   console.log(user);
   console.log(userData); */
   return (
     <div className=" w-full">
@@ -87,10 +87,7 @@ const Navbar = () => {
                 <DropMenu title="English" menuItems={language} />
               </div>
               {!user ? (
-                <Link href={'/login'}>
-                  {' '}
-                  <Button title={'Log In'} />
-                </Link>
+                <Button title={'Log In'} href={'/login'} />
               ) : (
                 <div className="flex flex-col gap-5 relative">
                   <div
@@ -146,10 +143,11 @@ const Navbar = () => {
                 <DropMenu title="🌐" menuItems={language} />
               </div>
               {!user ? (
-                <Link href={'/login'}>
-                  {' '}
-                  <Button title={'Log In'} designs={'h-[33px] w-[95px]'} />
-                </Link>
+                <Button
+                  href={'/login'}
+                  title={'Log In'}
+                  designs={'h-[33px] w-[95px]'}
+                />
               ) : (
                 <div className="flex flex-col gap-5 relative">
                   <div

@@ -21,6 +21,7 @@ const Hero = () => {
           <Button
             title={'Try Now'}
             designs={'w-full sm:w-[60%] lg:w-[160px]'}
+            href={"/app"}
           />
           <WatchVideo />
         </div>
@@ -42,6 +43,7 @@ const Hero = () => {
         </div>
         <div className="flex items-center gap-4 max-lg:flex-col max-lg:w-full max-lg:px-4 lg:hidden">
           <Button
+          href={"/app"}
             title={'Try Now'}
             designs={'w-full sm:w-[60%] lg:w-[160px]'}
           />

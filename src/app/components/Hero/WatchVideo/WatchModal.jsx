@@ -21,7 +21,7 @@ const WatchModal = ({ isOpen, close }) => {
         ></iframe>
       </div>
       <div className="flex justify-center items-center mt-10">
-        <Button title={'Try Now'} />
+        <Button title={'Try Now'} href={"/app"} />
       </div>
     </Modal>
   );

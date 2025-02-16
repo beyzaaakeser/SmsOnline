@@ -23,7 +23,7 @@ const Faq = () => {
         </div>
         <Questions />
        <div className='flex justify-center items-center mt-10'>
-       <Button title="Visit help center" designs="w-[200px]" />
+       <Button title="Visit help center" designs="w-[200px]" href={"/"} />
        </div>
       </div>
     </div>

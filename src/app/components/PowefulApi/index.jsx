@@ -32,7 +32,7 @@ const PowefulApi = () => {
           </div>
         </div>
         <div>
-          <Button title="API Docs" designs={'w-[160px] rounded-xl'} />
+          <Button title="API Docs" designs={'w-[160px] rounded-xl'} href={"/"} />
         </div>
       </div>
     </div>

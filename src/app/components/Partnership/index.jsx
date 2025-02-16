@@ -55,7 +55,7 @@ const Partnership = () => {
           </div>
         </div>
         <div>
-          <Button title="Contact Us" designs={'w-[180px] rounded-xl'} />
+          <Button title="Contact Us" designs={'w-[180px] rounded-xl'} href={"/"} />
         </div>
       </div>
 
