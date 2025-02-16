@@ -4,10 +4,25 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import ServiceItem from './components/ServiceItem';
 import Title from '@/app/components/SectionsTitle';
-import Loading from '@/app/loading';
 import { CiSearch } from 'react-icons/ci';
 import ProgressBar from './components/ProgressBar';
 import { appServices } from '@/app/utils/AppService';
+
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
 
 export default function ServiceList() {
   const { setState } = useAppContext();
@@ -18,6 +33,8 @@ export default function ServiceList() {
   const [error, setError] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   useEffect(() => {
     async function fetchServices() {
@@ -44,10 +61,9 @@ export default function ServiceList() {
     }
   }, [selectedService, setState, router]);
 
-  console.log(services);
-
-  if (loading) return <Loading />;
-  if (error) return <p>Error: {error}</p>;
+  const filteredServices = services.filter((service) =>
+    service?.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+  );
 
   return (
     <div className="container py-14">
@@ -66,11 +82,25 @@ export default function ServiceList() {
           placeholder="Search"
           className="p-4 w-full bg-gray-100 rounded-xl focus:outline-none"
           onFocus={() => setIsSearchFocused(true)}
+          onBlur={() => setIsSearchFocused(false)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       <div>
-        {!isSearchFocused && (
+        {debouncedSearchQuery ? (
+          <ul className="flex flex-col gap-4 mx-auto max-w-[500px]">
+            {filteredServices.map((service) => (
+              <ServiceItem
+                key={service.id}
+                service={service}
+                selectedService={selectedService}
+                onSelect={setSelectedService}
+              />
+            ))}
+          </ul>
+        ) : !isSearchFocused ? (
           <ul className="flex flex-col gap-4 mx-auto max-w-[500px]">
             {appServices.map((service) => (
               <ServiceItem
@@ -81,23 +111,18 @@ export default function ServiceList() {
               />
             ))}
           </ul>
-        )}
-
-        {isSearchFocused && (
-          <ul className="flex flex-col gap-4 mx-auto max-w-[500px]">
-            {services.map((service) => (
-              <ServiceItem
-                key={service.id}
-                service={service}
-                selectedService={selectedService}
-                onSelect={setSelectedService}
-              />
-            ))}
-          </ul>
-        )}
+        ) : null}
       </div>
 
-      <button onClick={handleSelectService} disabled={!selectedService}>
+      <button
+        onClick={handleSelectService}
+        disabled={!selectedService}
+        className={`mt-8 mx-auto block px-8 py-3 rounded-lg ${
+          selectedService
+            ? 'bg-blue-600 text-white hover:bg-blue-700'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        }`}
+      >
         Continue
       </button>
     </div>
