@@ -12,8 +12,6 @@ export default function CountryList() {
   const { state, setState } = useAppContext();
   const router = useRouter();
 
-  // ... diğer kodlar aynı kalacak ...
-
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

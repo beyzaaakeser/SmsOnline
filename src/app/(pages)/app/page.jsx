@@ -66,7 +66,6 @@ export default function ServiceList() {
           placeholder="Search"
           className="p-4 w-full bg-gray-100 rounded-xl focus:outline-none"
           onFocus={() => setIsSearchFocused(true)}
-          onBlur={() => setIsSearchFocused(false)}
         />
       </div>
 
