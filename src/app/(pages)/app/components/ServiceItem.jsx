@@ -2,17 +2,17 @@ import { memo } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import './ServiceItem.css';
 
-const ServiceItem = memo(({ service, selectedService, onSelect }) => {
-  const isSelected = selectedService?.id === service.id;
+const ServiceItem = memo(({ item, selectedService, onSelect, designs, imgDesigns }) => {
+  const isSelected = selectedService?.id === item?.id;
 
   return (
     <li
       className="flex items-center cursor-pointer border rounded-xl p-3 px-4 max-w-[450px] "
-      onClick={() => onSelect(service)}
+      onClick={() => onSelect(item)}
     >
-      {service.logo ? (
-        <div className='w-[50px]'>
-          <img src={service.logo} alt={service.logo} className='size-8' />
+      {item?.logo ? (
+        <div className={`w-[50px] ${designs} `}>
+          <img src={item.logo} alt={item.logo} className={`w-8 h-8 ${imgDesigns}`} />
         </div>
       ) : (
         <div className="w-[50px]">
@@ -21,7 +21,7 @@ const ServiceItem = memo(({ service, selectedService, onSelect }) => {
       )}
 
       <div className="flex items-center justify-between w-full">
-        <div>{service.title}</div>
+        <div>{item?.title}</div>
         <div className={`radio-box ${isSelected ? 'selected' : ''}`}>
           {isSelected && <FaCheck className="check-icon text-xs" />}
         </div>
