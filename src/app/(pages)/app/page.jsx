@@ -30,7 +30,6 @@ function useDebounce(value, delay) {
 export default function ServiceList() {
   const { setState } = useAppContext();
   const router = useRouter();
-
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -57,6 +56,21 @@ export default function ServiceList() {
     }
     fetchServices();
   }, []);
+
+  useEffect(() => {
+    const savedService = localStorage.getItem('selectedService');
+    if (savedService) {
+      setSelectedService(JSON.parse(savedService));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedService) {
+      localStorage.setItem('selectedService', JSON.stringify(selectedService));
+    } else {
+      localStorage.removeItem('selectedService');
+    }
+  }, [selectedService]);
 
   const handleSelectService = useCallback(() => {
     if (selectedService) {

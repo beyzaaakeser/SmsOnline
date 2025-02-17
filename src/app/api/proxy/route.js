@@ -1,15 +1,20 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const type = searchParams.get('type'); // URL parametresi ile API türünü belirle
+  console.log(searchParams)
+  const type = searchParams.get('type');
+  const countryId = searchParams.get('country_id');
   const token = process.env.NEXT_PUBLIC_API_KEY;
   const baseURL = process.env.NEXT_PUBLIC_API_URL;
+  
 
   let apiUrl;
 
   if (type === 'services') {
     apiUrl = `${baseURL}/applications?token=${token}`;
-  } else {
+  } else if (type === 'countries') {
     apiUrl = `${baseURL}/countries?token=${token}`;
+  } else if (type === 'prices') {
+    apiUrl = `${baseURL}/get-prices?token=${token}&country_id=${countryId}`;
   }
 
   try {

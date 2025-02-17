@@ -3,7 +3,6 @@
 import { useAppContext } from '@/app/redux/AppProvider';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 import Loading from '@/app/loading';
 import Title from '@/app/components/SectionsTitle';
 import ProgressBar from '../../components/ProgressBar';
@@ -34,7 +33,6 @@ function useDebounce(value, delay) {
 export default function CountryList() {
   const { state, setState } = useAppContext();
   const router = useRouter();
-
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -45,9 +43,27 @@ export default function CountryList() {
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   useEffect(() => {
+    const savedCountry = sessionStorage.getItem('selectedCountry');
+    if (savedCountry) {
+      setSelectedCountry(JSON.parse(savedCountry));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      sessionStorage.setItem(
+        'selectedCountry',
+        JSON.stringify(selectedCountry)
+      );
+    } else {
+      sessionStorage.removeItem('selectedCountry');
+    }
+  }, [selectedCountry]);
+
+  useEffect(() => {
     async function fetchCountries() {
       try {
-        const response = await fetch('/api/proxy');
+        const response = await fetch('/api/proxy?type=countries');
         if (!response.ok)
           throw new Error(`API request failed: ${response.status}`);
         const data = await response.json();
@@ -138,6 +154,7 @@ export default function CountryList() {
                 item={item}
                 selectedItem={selectedCountry}
                 onSelect={setSelectedCountry}
+                imgDesigns={'!h-6'}
               />
             ))}
           </ul>
