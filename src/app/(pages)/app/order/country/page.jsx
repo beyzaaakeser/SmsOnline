@@ -13,6 +13,7 @@ import ServiceItem from '../../components/ServiceItem';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import Link from 'next/link';
 import '../../ServiceCountry.css';
+import ListItem from '../../components/ListItem';
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -40,6 +41,7 @@ export default function CountryList() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   useEffect(() => {
@@ -79,9 +81,16 @@ export default function CountryList() {
   }, []);
 
   const handleSelectCountry = useCallback(() => {
+    if (state.service == null) router.push('/app');
     if (selectedCountry) {
       setState((prev) => ({ ...prev, country: selectedCountry }));
       router.push('/app/order/activation');
+    }
+    if (!selectedCountry) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
     }
   }, [selectedCountry, setState, router]);
 
@@ -93,7 +102,12 @@ export default function CountryList() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="container py-14 min-h-screen">
+    <div className="container py-14 max-sm:px-4 min-h-screen relative">
+      {showAlert && (
+        <div className="absolute top-24 right-4 bg-orange-500 w-[300px] text-white text-center px-6 py-3 rounded-lg shadow-xl">
+          Please choose a country.
+        </div>
+      )}
       <Title
         title={'Country'}
         info={'Please choose number country'}
@@ -102,12 +116,12 @@ export default function CountryList() {
 
       <ProgressBar title={'Steps 2/3'} designs={'w-2/3'} />
 
-      <div className="h-16 border max-w-[550px] rounded-xl flex items-center mx-auto bg-gray-100 px-5 mb-8">
+      <div className="h-12 sm:h-16 border max-w-[550px] rounded-xl flex items-center mx-auto bg-gray-100 px-5 mb-8 gap-2">
         <CiSearch className="text-2xl" />
         <input
           type="search"
           placeholder="Search"
-          className="p-4 w-full bg-gray-100 rounded-xl focus:outline-none"
+          className="h-full w-full bg-gray-100 rounded-xl focus:outline-none"
           onFocus={() => setIsSearchFocused(true)}
           onBlur={() => setIsSearchFocused(false)}
           value={searchQuery}
@@ -117,12 +131,14 @@ export default function CountryList() {
 
       <div>
         {debouncedSearchQuery ? (
-          <ul className="flex flex-col gap-2 max-w-[550px] mx-auto overflow-y-auto max-h-[300px]   ">
+          <ul className="flex flex-col max-w-[550px] mx-auto overflow-y-auto max-h-[300px]   ">
             {filteredCountries.map((item) => (
-              <li className="flex items-center gap-2 border-b py-3">
-                <img src={item.logo} alt={item.logo} className="w-8 h-6" />{' '}
-                {item.title}
-              </li>
+              <ListItem
+                key={item.id}
+                item={item}
+                selectedItem={selectedCountry}
+                onSelect={setSelectedCountry}
+              />
             ))}
           </ul>
         ) : !isSearchFocused ? (
@@ -141,8 +157,8 @@ export default function CountryList() {
         ) : null}
       </div>
 
-      <div className="fixed bottom-0 left-0 py-4 p right-0 w-full bg-white shadow-2xl">
-        <div className="flex items-center gap-4 justify-end pr-40 ">
+      <div className="fixed bottom-0 left-0 py-4  right-0 w-full bg-white shadow-2xl">
+        <div className="flex items-center gap-4 justify-end px-4 sm:pr-40 ">
           <Link
             href={'..'}
             className={
@@ -154,39 +170,12 @@ export default function CountryList() {
 
           <button
             onClick={handleSelectCountry}
-            disabled={!selectedCountry}
-            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[250px] text-center rounded-xl`}
+            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
           >
             Continue <FaArrowRightLong />
           </button>
         </div>
       </div>
-
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {countries.map((country) => (
-          <div
-            key={country.id}
-            className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
-            onClick={() => handleSelectCountry(country)}
-          >
-            <div className="flex items-center gap-4">
-              {country.flag && (
-                <Image
-                  src={country.flag}
-                  alt={country.title}
-                  width={60}
-                  height={40}
-                  className="object-cover rounded"
-                />
-              )}
-              <div>
-                <h3 className="font-semibold text-lg">{country.title}</h3>
-                <p className="text-gray-500">Kod: {country.code}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 }

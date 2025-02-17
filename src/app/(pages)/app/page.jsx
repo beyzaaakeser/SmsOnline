@@ -9,6 +9,7 @@ import ProgressBar from './components/ProgressBar';
 import { appServices } from '@/app/utils/AppService';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import './ServiceCountry.css';
+import ListItem from './components/ListItem';
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -36,6 +37,7 @@ export default function ServiceList() {
   const [selectedService, setSelectedService] = useState(null);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   useEffect(() => {
@@ -61,6 +63,12 @@ export default function ServiceList() {
       setState((prev) => ({ ...prev, service: selectedService }));
       router.push('/app/order/country');
     }
+    if (!selectedService) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    }
   }, [selectedService, setState, router]);
 
   const filteredServices = services.filter((service) =>
@@ -68,7 +76,13 @@ export default function ServiceList() {
   );
 
   return (
-    <div className="container py-14 min-h-screen">
+    <div className="container py-14 max-sm:px-4 min-h-screen relative">
+      {showAlert && (
+        <div className="absolute top-24 right-4 bg-orange-500 w-[300px] text-white text-center px-6 py-3 rounded-lg shadow-xl">
+          Please choose a service.
+        </div>
+      )}
+
       <Title
         title={'Service'}
         info={'Please choose website or app name'}
@@ -77,12 +91,12 @@ export default function ServiceList() {
 
       <ProgressBar title={'Steps 1/3'} designs={'w-1/3'} />
 
-      <div className="h-16 border max-w-[550px] rounded-xl flex items-center mx-auto bg-gray-100 px-5 mb-8">
+      <div className="h-12 sm:h-16 border max-w-[550px] rounded-xl flex items-center mx-auto bg-gray-100 px-5 mb-8 gap-2">
         <CiSearch className="text-2xl" />
         <input
           type="search"
           placeholder="Search"
-          className="p-4 w-full bg-gray-100 rounded-xl focus:outline-none"
+          className="h-full w-full bg-gray-100 rounded-xl focus:outline-none"
           onFocus={() => setIsSearchFocused(true)}
           onBlur={() => setIsSearchFocused(false)}
           value={searchQuery}
@@ -92,14 +106,14 @@ export default function ServiceList() {
 
       <div>
         {debouncedSearchQuery ? (
-          <ul className="flex flex-col gap-2 max-w-[550px] mx-auto overflow-y-auto max-h-[300px]   ">
+          <ul className="flex flex-col  max-w-[550px] mx-auto overflow-y-auto max-h-[300px]   ">
             {filteredServices.map((item) => (
-              <li className="flex items-center gap-2 border-b py-3">
-                <div className="w-[50px]">
-                  <div className="size-[32px] rounded-full bg-blue-400 "></div>
-                </div>
-                {item.title}
-              </li>
+              <ListItem
+                key={item.id}
+                item={item}
+                selectedItem={selectedService}
+                onSelect={setSelectedService}
+              />
             ))}
           </ul>
         ) : !isSearchFocused ? (
@@ -116,8 +130,8 @@ export default function ServiceList() {
         ) : null}
       </div>
 
-      <div className="fixed bottom-0 left-0 py-4 p right-0 w-full bg-white shadow-2xl">
-        <div className="flex items-center gap-4 justify-end pr-40 ">
+      <div className="fixed bottom-0 left-0 py-4  right-0 w-full bg-white shadow-2xl">
+        <div className="flex items-center gap-4 justify-end px-4 sm:pr-40 ">
           {selectedService && (
             <button
               onClick={() => setSelectedService(null)}
@@ -130,8 +144,7 @@ export default function ServiceList() {
           )}
           <button
             onClick={handleSelectService}
-            disabled={!selectedService}
-            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[250px] text-center rounded-xl`}
+            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
           >
             Continue <FaArrowRightLong />
           </button>
