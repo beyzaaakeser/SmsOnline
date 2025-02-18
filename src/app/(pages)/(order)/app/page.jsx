@@ -8,7 +8,7 @@ import { CiSearch } from 'react-icons/ci';
 import ProgressBar from './components/ProgressBar';
 import { appServices } from '@/app/utils/AppService';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import './ServiceCountry.css';
+import './components/ServiceCountry.css';
 import ListItem from './components/ListItem';
 
 function useDebounce(value, delay) {

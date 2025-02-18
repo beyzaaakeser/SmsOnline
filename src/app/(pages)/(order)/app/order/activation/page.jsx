@@ -3,6 +3,8 @@ import Title from '@/app/components/SectionsTitle';
 import { useAppContext } from '@/app/redux/AppProvider';
 import ProgressBar from '../../components/ProgressBar';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 export default function ActivationPage() {
   const { state } = useAppContext();
@@ -93,13 +95,13 @@ export default function ActivationPage() {
             <div>{state.service?.title}</div>
           </li>
           <li className="flex items-center cursor-pointer border rounded-xl p-3 px-4 w-[380px] max-w-[450px] ">
-            <div>
+            <div className='flex items-center'>
               {state.country?.logo ? (
-                <div className={`w-[50px] `}>
+                <div className={`w-[50px] h-[32px] flex items-center `}>
                   <img
                     src={state.country?.logo}
                     alt={state.country?.logo}
-                    className={`w-8 h-8 `}
+                    className={`w-8 h-6 `}
                   />
                 </div>
               ) : (
@@ -111,7 +113,36 @@ export default function ActivationPage() {
             <div>{state.country?.title}</div>
           </li>
         </ul>
-        <div>{servicePrice?.cost}</div>
+        <div className="bg-gray-100/60 rounded-xl my-12  max-w-[320px] flex flex-col items-center justify-center mx-auto p-4 py-5">
+          <div className="text-orange-500 text-3xl font-semibold">
+            ${servicePrice?.cost}
+          </div>
+          <p className="text-gray-600 text-sm">Activation price</p>
+        </div>
+        <div className="flex flex-col items-center justify-center text-[10px]">
+          <p className="text-gray-500">
+            Need 100+ Activation's and API Access?
+          </p>
+          <p className="text-orange-500">Contact Us</p>
+        </div>
+      </div>
+      <div className="fixed bottom-0 left-0 py-4  right-0 w-full bg-white shadow-2xl">
+        <div className="flex items-center gap-4 justify-end px-4 sm:pr-40 ">
+          <Link
+            href={'..'}
+            className={
+              'bg-white text-orange-500 border border-orange-500 hover:bg-orange-500 hover:text-white hover:shadow-xl w-[150px] py-3 text-center rounded-xl'
+            }
+          >
+            Back
+          </Link>
+
+          <button
+            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
+          >
+            <span>Activate</span> <FaArrowRightLong />
+          </button>
+        </div>
       </div>
     </div>
   );

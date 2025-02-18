@@ -11,7 +11,7 @@ import { appCountries } from '@/app/utils/AppCountry';
 import ServiceItem from '../../components/ServiceItem';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import Link from 'next/link';
-import '../../ServiceCountry.css';
+import '../../components/ServiceCountry.css';
 import ListItem from '../../components/ListItem';
 
 function useDebounce(value, delay) {
@@ -163,7 +163,7 @@ export default function CountryList() {
             {appCountries.map((item) => (
               <ServiceItem
                 designs={'w-[100px]'}
-                imgDesigns={'w-8 h-6'}
+                imgDesigns={'w-8 !h-6'}
                 key={item.id}
                 item={item}
                 selectedService={selectedCountry}
