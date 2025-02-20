@@ -18,7 +18,7 @@ const Admin = () => {
         setUser(user);
 
         if (user) {
-          setIsLoading(true); // Kullanıcı var ama userData'yı henüz çekmedik
+          setIsLoading(true);
         } else {
           setUserData(null);
           setIsLoading(false);
@@ -26,7 +26,7 @@ const Admin = () => {
       },
       (data) => {
         setUserData(data);
-        setIsLoading(false); // userData çekildikten sonra yükleme bitiyor
+        setIsLoading(false); 
       }
     );
 
@@ -47,14 +47,6 @@ const Admin = () => {
   if (isLoading || isRedirecting) {
     return <Loading/>;
   }
-
-  /*   if (!userData || userData.role !== 'ADMIN') {
-    router.replace('/');
-    return null;
-  }
- */
-/*   console.log(user);
-  console.log(userData); */
   return null;
 };
 

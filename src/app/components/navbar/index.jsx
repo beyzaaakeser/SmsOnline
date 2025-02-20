@@ -87,7 +87,7 @@ const Navbar = () => {
                 <DropMenu title="English" menuItems={language} />
               </div>
               {!user ? (
-                <Button title={'Log In'} href={'/login'} />
+                <Button title={'Try Now'} href={'/app'} />
               ) : (
                 <div className="flex flex-col gap-5 relative">
                   <div
@@ -144,8 +144,8 @@ const Navbar = () => {
               </div>
               {!user ? (
                 <Button
-                  href={'/login'}
-                  title={'Log In'}
+                  href={'/app'}
+                  title={'Try Now'}
                   designs={'h-[33px] w-[95px]'}
                 />
               ) : (

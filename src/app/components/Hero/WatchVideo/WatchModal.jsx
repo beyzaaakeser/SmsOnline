@@ -1,4 +1,4 @@
-import Modal from '@/app/(pages)/login/modal';
+import Modal from '@/app/components/Modal';
 import React from 'react';
 import Button from '../../Button';
 
@@ -21,7 +21,7 @@ const WatchModal = ({ isOpen, close }) => {
         ></iframe>
       </div>
       <div className="flex justify-center items-center mt-10">
-        <Button title={'Try Now'} href={"/app"} />
+        <Button title={'Try Now'} href={'/app'} />
       </div>
     </Modal>
   );

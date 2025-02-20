@@ -7,10 +7,8 @@ import { useRouter } from 'next/navigation';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const GoogleButton = () => {
   const router = useRouter();
-
 
   const handleClick = async () => {
     try {
@@ -22,9 +20,9 @@ const GoogleButton = () => {
           displayName: result.user.displayName,
           photoURL: result.user.photoURL,
         };
-       
+
         toast.success('Successfully logged into account!');
-        router.push('/');
+        router.push('/app');
       } else {
         toast.error('Login failed - no user data received');
       }
@@ -38,17 +36,15 @@ const GoogleButton = () => {
     <>
       <button
         onClick={handleClick}
-        className="bg-white flex items-center py-2 px-10 
-        rounded-full gap-2 transition hover:bg-gray-100
-        text-orange-500 font-semibold whitespace-nowrap 
-        border border-orange-400"
+        className="bg-white flex items-center justify-center py-4 px-10  w-full
+        rounded-xl gap-2 text-black  whitespace-nowrap border "
       >
         <img
           src="/images/google-g.png"
           className="h-[20px]"
           alt="Google Logo"
         />
-        Sign in with Google
+        Continue with Google
       </button>
       <ToastContainer position="bottom-right" autoClose={2000} />
     </>

@@ -3,22 +3,6 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '.';
 
-// Kullanıcı bilgisini dinleme fonksiyonu
-/* export const listenToAuthChanges = (setUser, setUserData) => {
-  return onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      setUser(user); // Önce kullanıcı bilgisini set et
-
-      // Firestore'dan kullanıcı verisini çek
-      const userData = await fetchUserData(user.uid);
-      setUserData(userData); // Firestore'dan gelen veriyi set et
-    } else {
-      setUser(null);
-      setUserData(null);
-    }
-  });
-}; */
-
 export const listenToAuthChanges = (setUser, setUserData) => {
   return onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -39,7 +23,6 @@ export const listenToAuthChanges = (setUser, setUserData) => {
 };
 
 
-// Kullanıcı verisini Firestore'dan çekme
 export const fetchUserData = async (uid) => {
   try {
     const userDoc = await getDoc(doc(db, 'users', uid));
@@ -50,7 +33,7 @@ export const fetchUserData = async (uid) => {
   }
 };
 
-// Kullanıcı çıkış işlemi
+
 export const logout = async () => {
   try {
     await signOut(auth);

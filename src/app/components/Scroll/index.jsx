@@ -1,4 +1,4 @@
-"use client"; // Client Component olarak tanımlıyoruz
+"use client";
 
 import { useState, useEffect } from "react";
 import { IoArrowUpCircleOutline } from "react-icons/io5";

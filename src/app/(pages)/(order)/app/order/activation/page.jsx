@@ -5,6 +5,7 @@ import ProgressBar from '../../components/ProgressBar';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { listenToAuthChanges } from '@/app/firebase/fetchUserData';
 
 export default function ActivationPage() {
   const { state } = useAppContext();
@@ -12,6 +13,13 @@ export default function ActivationPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [servicePrice, setServicePrice] = useState(null);
+  const [user, setUser] = useState();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const unSub = listenToAuthChanges(setUser, setUserData);
+    return () => unSub();
+  }, []);
 
   useEffect(() => {
     if (state.country?.id) {
@@ -40,28 +48,21 @@ export default function ActivationPage() {
 
   useEffect(() => {
     if (prices && state.service?.id) {
-      // prices bir obje ise, içindeki değerleri bir diziye dönüştür
       const pricesArray = Object.values(prices);
 
-      // Dizi içinde uygulama ID'sine göre fiyatı bul
       const priceForService = pricesArray.find(
         (price) => price.application_id === state.service.id
       );
 
-      // Bulunan fiyatı state'e kaydet
       setServicePrice(priceForService);
+      sessionStorage.setItem('servicePriceCost', priceForService.cost);
 
-      // Eğer fiyat bulunamazsa hata mesajı göster
       if (!priceForService) {
         console.error('Price for the service not found:', state.service.id);
         setError('Price for the selected service is not available.');
       }
     }
   }, [prices, state.service?.id]);
-
-  console.log(state);
-  console.log(prices);
-  console.log(servicePrice);
 
   return (
     <div className="container flex flex-col items-center py-14 max-sm:px-4 min-h-screen">
@@ -95,7 +96,7 @@ export default function ActivationPage() {
             <div>{state.service?.title}</div>
           </li>
           <li className="flex items-center cursor-pointer border rounded-xl p-3 px-4 w-[380px] max-w-[450px] ">
-            <div className='flex items-center'>
+            <div className="flex items-center">
               {state.country?.logo ? (
                 <div className={`w-[50px] h-[32px] flex items-center `}>
                   <img
@@ -136,12 +137,12 @@ export default function ActivationPage() {
           >
             Back
           </Link>
-
-          <button
-            className={` flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
+          <Link
+            href={user ? '/app/funds' : '/app/signin'}
+            className={`flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
           >
             <span>Activate</span> <FaArrowRightLong />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

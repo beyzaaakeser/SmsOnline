@@ -26,7 +26,7 @@ const OrderNavbar = () => {
         onClick={() => setIsOpen(false)}
       ></div>
       <div
-        className={`fixed top-0 bottom-0 right-0 w-[350px] sm:w-[400px] bg-white p-8 px-12 shadow-lg z-[10] transform transition-transform duration-300 ${
+        className={`fixed top-0 h-screen right-0 w-[350px] sm:w-[400px] bg-white p-8 px-12 shadow-lg z-[10] transform transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
