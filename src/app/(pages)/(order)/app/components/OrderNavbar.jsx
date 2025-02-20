@@ -30,55 +30,60 @@ const OrderNavbar = () => {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="">
+        <div className="h-full flex flex-col">
           <div
             onClick={() => setIsOpen(false)}
-            className="border rounded-full size-10 flex justify-center items-center cursor-pointer"
+            className="border rounded-full size-10 flex justify-center items-center  cursor-pointer"
           >
             <MdClose className="text-lg" />
           </div>
 
-          <div className=" text-xl flex flex-col justify-center gap-5 mt-8 px-8">
-            <h2 className="font-semibold text-2xl">Menu</h2>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <CiCirclePlus className="text-orange-500 !font-bold" />{' '}
-              <span>Order New</span>
+          <div className='flex flex-col justify-between h-full'>
+            <div className=" text-xl flex flex-col justify-center gap-5 mt-8 px-8">
+              <h2 className="font-semibold text-2xl">Menu</h2>
+              <div className="flex items-center gap-3 cursor-pointer">
+                <CiCirclePlus className="text-orange-500 !font-bold" />{' '}
+                <span>Order New</span>
+              </div>
+              <div className="flex items-center gap-3 cursor-pointer ">
+                <MdHistory className="text-orange-500" /> <span>History</span>
+              </div>
+              <div className="flex items-center gap-3 cursor-pointer">
+                <CiDollar className="text-orange-500 font-semibold" />{' '}
+                <span>Funds</span>
+              </div>
+              <div className="flex items-center gap-3 cursor-pointer">
+                <GoCreditCard className="text-orange-500 font-semibold" />{' '}
+                <span>Transactions</span>
+              </div>
+              <div className="flex items-center gap-3 cursor-pointer">
+                <IoIosHelpCircleOutline className="text-orange-500 font-semibold" />{' '}
+                <span>Help</span>
+              </div>
             </div>
-            <div className="flex items-center gap-3 cursor-pointer ">
-              <MdHistory className="text-orange-500" /> <span>History</span>
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <CiDollar className="text-orange-500 font-semibold" />{' '}
-              <span>Funds</span>
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <GoCreditCard className="text-orange-500 font-semibold" />{' '}
-              <span>Transactions</span>
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <IoIosHelpCircleOutline className="text-orange-500 font-semibold" />{' '}
-              <span>Help</span>
-            </div>
-          </div>
 
-          <div className="flex flex-col justify-center gap-3 mt-12 px-8 text-sm">
-            <p>
-              Temp Number{' '}
-              <span className="bg-orange-500 text-white font-semibold p-[2px] px-1 rounded-md ">
-                PRO
-              </span>
-            </p>
-            <p>Terms of Service</p>
-            <p>Privacy Policy</p>
-            <p>Refund Policy</p>
-            <p>Affiliate Program</p>
-            <p>API</p>
-          </div>
-          <div className="border-t mt-10">
-            <Link href={'/login'} className="flex items-center gap-3 px-8 mt-4">
-              <RiLogoutBoxRLine className="text-green-500 text-xl" />
-              <span className="text-sm">Login/Sign Up</span>
-            </Link>
+            <div className="flex flex-col justify-center gap-3 mt-12 px-8 text-sm">
+              <p>
+                Temp Number{' '}
+                <span className="bg-orange-500 text-white font-semibold p-[2px] px-1 rounded-md ">
+                  PRO
+                </span>
+              </p>
+              <p>Terms of Service</p>
+              <p>Privacy Policy</p>
+              <p>Refund Policy</p>
+              <p>Affiliate Program</p>
+              <p>API</p>
+            </div>
+            <div className="border-t ">
+              <Link
+                href={'/login'}
+                className="flex items-center gap-3 px-8 mt-4"
+              >
+                <RiLogoutBoxRLine className="text-green-500 text-xl" />
+                <span className="text-sm">Login/Sign Up</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
