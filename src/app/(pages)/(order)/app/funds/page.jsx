@@ -1,8 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+import Amount from './Amount';
 
 const Funds = () => {
   const [selected, setSelected] = useState(null);
+  const [amount, setAmount] = useState('');
 
   const paymentMethods = [
     { id: 'visa', src: '/images/visa.svg', alt: 'visa card' },
@@ -12,6 +14,8 @@ const Funds = () => {
     { id: 'binance', src: '/images/binance.svg', alt: 'binance' },
     { id: 'promo', src: '/images/promoCode.svg', alt: 'promo code' },
   ];
+
+  console.log(amount);
 
   return (
     <div className="container py-8 max-lg:px-4">
@@ -37,7 +41,14 @@ const Funds = () => {
               </div>
             ))}
           </div>
+
+          <Amount
+            selected={selected}
+            setSelected={setSelected}
+            setAmount={setAmount}
+          />
         </div>
+
         <div className="flex w-1/3 max-sm:hidden">
           <div className="flex flex-col justify-center items-center bg-gray-100 rounded-3xl w-full h-[200px]">
             <div className="flex items-center gap-2">

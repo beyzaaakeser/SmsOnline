@@ -138,7 +138,7 @@ export default function ActivationPage() {
             Back
           </Link>
           <Link
-            href={user ? '/app/funds' : '/app/signin'}
+            href={user ? '/app/funds' : '/app/create-account'}
             className={`flex items-center gap-3 justify-center px-8 py-3 cursor-pointer bg-orange-500 text-white border border-orange-500 hover:shadow-xl w-[200px] sm:w-[250px] text-center rounded-xl`}
           >
             <span>Activate</span> <FaArrowRightLong />
