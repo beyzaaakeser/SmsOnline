@@ -11,7 +11,7 @@ export const Modal = ({ children, isOpen, close, designs, hideClose }) => {
       >
         <div
           className={`py-10 px-8 w-[95%] sm:w-3/4 max-w-[900px] rounded-md shadow-2xl ${designs}`}
-          /*  onClick={(e) => e.stopPropagation()} */
+          
         >
           {!hideClose && (
             <div className="flex justify-end">

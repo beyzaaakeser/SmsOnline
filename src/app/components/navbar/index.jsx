@@ -23,8 +23,6 @@ const Navbar = () => {
     return () => unSub();
   }, []);
 
-  /*   console.log(user);
-  console.log(userData); */
   return (
     <div className=" w-full">
       <div className="container flex flex-row justify-between items-center h-[96px] max-lg:px-2">
