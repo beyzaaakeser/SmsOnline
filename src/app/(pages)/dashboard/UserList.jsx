@@ -64,8 +64,12 @@ const UserList = () => {
           <div className="flex flex-col gap-4">
             {users.map((user) => {
              
+              // Stable color per user (Math.random changed it on every render)
               const randomColor =
-                colors[Math.floor(Math.random() * colors.length)];
+                colors[
+                  [...String(user.id)].reduce((sum, ch) => sum + ch.charCodeAt(0), 0) %
+                    colors.length
+                ];
 
               return (
                 <div

@@ -28,17 +28,17 @@ export const cards = [
     info: 'Mobile app for Iphones',
     desc: [
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Bnbecky : Good service. They got a good services just too costly but they give best",
         link: 'October 7, 2022',
       },
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Dogsmiledad : Nice It's a very good app",
         link: 'June 11, 2022',
       },
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Bnbeckyy : Good service. They got a good services just too costly but they give best",
         link: 'August 3, 2022'
       },
@@ -50,17 +50,17 @@ export const cards = [
     info: 'Mobile app for Android',
     desc: [
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Charles Christopher : Works fast, so easy to use and top up credits. Love it.",
         link: 'December 14, 2022',
       },
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Peter Park : So good!!! I verified telegram with this application!!!",
         link: 'January 24, 2022',
       },
       {
-        stars:[<FaStar />,<FaStar />,<FaStar />,<FaStar />,<FaStar />],
+        stars:[1,2,3,4,5].map((i) => <FaStar key={i} />),
         text: "Modlochi Chibuzor : It's a great app, I fancy how it's works and their terms and conditions are favorable kudos 👍",
         link: 'September 3, 2022'
       },

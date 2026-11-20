@@ -30,4 +30,6 @@ const ServiceItem = memo(({ item, selectedService, onSelect, designs, imgDesigns
   );
 });
 
+ServiceItem.displayName = 'ServiceItem';
+
 export default ServiceItem;

@@ -40,7 +40,7 @@ const HowItWorks = () => {
           <div className="mb-10">
             <h2 className="text-xl font-semibold">Process</h2>
             <p className="text-gray-500 text-[14px]">
-              The 'magic' we are doing
+              The &apos;magic&apos; we are doing
             </p>
           </div>
           <div className="bg-white rounded-lg h-[450px] w-[260px] p-4 flex flex-col justify-between relative">

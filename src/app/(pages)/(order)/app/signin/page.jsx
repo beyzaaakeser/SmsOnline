@@ -118,7 +118,7 @@ const SignIn = () => {
           </button>
         </form>
         <p className="mt-5 text-center text-sm text-gray-500">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <span className="text-orange-500 font-semibold ">
             <Link href={'/app/signup'}>Sign Up</Link>
           </span>
