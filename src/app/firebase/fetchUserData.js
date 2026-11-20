@@ -4,6 +4,11 @@ import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '.';
 
 export const listenToAuthChanges = (setUser, setUserData) => {
+  if (!auth) {
+    setUser(null);
+    setUserData(null);
+    return () => {};
+  }
   return onAuthStateChanged(auth, async (user) => {
     if (user) {
       setUser(user); 
@@ -24,6 +29,7 @@ export const listenToAuthChanges = (setUser, setUserData) => {
 
 
 export const fetchUserData = async (uid) => {
+  if (!db) return null;
   try {
     const userDoc = await getDoc(doc(db, 'users', uid));
     return userDoc.exists() ? userDoc.data() : null;
@@ -35,6 +41,7 @@ export const fetchUserData = async (uid) => {
 
 
 export const logout = async () => {
+  if (!auth) return;
   try {
     await signOut(auth);
   } catch (error) {

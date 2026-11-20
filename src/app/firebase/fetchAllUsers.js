@@ -3,6 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from './index.js';
 
 export async function getAllUsers() {
+  if (!db) return [];
   try {
     const usersCollectionRef = collection(db, 'users');
 

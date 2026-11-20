@@ -1,5 +1,5 @@
 'use client';
-import { auth } from '@/app/firebase';
+import { auth, ensureFirebase } from '@/app/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -31,6 +31,7 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!ensureFirebase()) return;
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
