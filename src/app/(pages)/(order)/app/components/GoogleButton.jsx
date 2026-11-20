@@ -1,7 +1,7 @@
 'use client';
 import { signInWithPopup } from 'firebase/auth';
 import React from 'react';
-import { auth, provider } from '@/app/firebase';
+import { auth, provider, ensureFirebase } from '@/app/firebase';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { ToastContainer } from 'react-toastify';
@@ -11,6 +11,7 @@ const GoogleButton = () => {
   const router = useRouter();
 
   const handleClick = async () => {
+    if (!ensureFirebase()) return;
     try {
       const result = await signInWithPopup(auth, provider);
       if (result.user) {

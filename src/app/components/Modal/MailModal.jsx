@@ -2,13 +2,14 @@
 
 import React from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '@/app/firebase';
+import { auth, ensureFirebase } from '@/app/firebase';
 import { toast } from 'react-toastify';
 import Modal from './index';
 
 const MailModal = ({ isOpen, close }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!ensureFirebase()) return;
 
     const email = e.target[0].value;
     sendPasswordResetEmail(auth, email)

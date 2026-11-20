@@ -1,9 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['flagcdn.com', 'upload.wikimedia.org'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'flagcdn.com' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+    ],
     dangerouslyAllowSVG: true, // SVG kullanımını açar
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
   },
   webpack(config) {
     config.module.rules.push({

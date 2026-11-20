@@ -16,7 +16,7 @@ import {
   IoEyeOutline,
   IoLockOpenOutline,
 } from 'react-icons/io5';
-import { auth, db } from '@/app/firebase';
+import { auth, db, ensureFirebase } from '@/app/firebase';
 import { doc, setDoc, Timestamp } from 'firebase/firestore';
 
 const SignUp = () => {
@@ -30,6 +30,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!ensureFirebase()) return;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {

@@ -1,5 +1,5 @@
 'use client';
-import { auth } from '@/app/firebase';
+import { auth, ensureFirebase } from '@/app/firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import { CiMail } from 'react-icons/ci';
@@ -19,6 +19,7 @@ const ResetPassword = () => {
     }
 
     setEmailError('');
+    if (!ensureFirebase()) return;
 
     sendPasswordResetEmail(auth, email)
       .then(() => {
