@@ -10,7 +10,7 @@ const Download = () => {
           <h2 className="text-[26px] font-semibold">Download - Get it now</h2>
           <p className="text-[18px] lg:pr-24 leading-relaxed">
             With our easy-to-use interface, you can quickly visit or download a
-            temporary number and have it up and running in no time. So don't
+            temporary number and have it up and running in no time. So don&apos;t
             wait - get your temporary phone number today!
           </p>
 

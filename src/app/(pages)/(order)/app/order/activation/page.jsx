@@ -21,18 +21,12 @@ export default function ActivationPage() {
     return () => unSub();
   }, []);
 
-  useEffect(() => {
-    if (state.country?.id) {
-      fetchPrices(state.country.id);
-    }
-  }, [state.country?.id]);
-
   const fetchPrices = async (countryId) => {
     setLoading(true);
     setError(null);
     try {
       const response = await fetch(
-        `/api/proxy?type=prices&country_id=${state.country.id}`
+        `/api/proxy?type=prices&country_id=${countryId}`
       );
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`);
@@ -47,6 +41,12 @@ export default function ActivationPage() {
   };
 
   useEffect(() => {
+    if (state.country?.id) {
+      fetchPrices(state.country.id);
+    }
+  }, [state.country?.id]);
+
+  useEffect(() => {
     if (prices && state.service?.id) {
       const pricesArray = Object.values(prices);
 
@@ -55,12 +55,14 @@ export default function ActivationPage() {
       );
 
       setServicePrice(priceForService);
-      sessionStorage.setItem('servicePriceCost', priceForService.cost);
 
       if (!priceForService) {
         console.error('Price for the service not found:', state.service.id);
         setError('Price for the selected service is not available.');
+        return;
       }
+
+      sessionStorage.setItem('servicePriceCost', priceForService.cost);
     }
   }, [prices, state.service?.id]);
 
@@ -122,7 +124,7 @@ export default function ActivationPage() {
         </div>
         <div className="flex flex-col items-center justify-center text-[10px]">
           <p className="text-gray-500">
-            Need 100+ Activation's and API Access?
+            Need 100+ Activation&apos;s and API Access?
           </p>
           <p className="text-orange-500">Contact Us</p>
         </div>

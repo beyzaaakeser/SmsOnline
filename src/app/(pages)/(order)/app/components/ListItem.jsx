@@ -38,4 +38,6 @@ const ListItem = memo(
   }
 );
 
+ListItem.displayName = 'ListItem';
+
 export default ListItem;

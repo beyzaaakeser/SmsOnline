@@ -27,7 +27,3 @@ export async function getAllUsers() {
     return [];
   }
 }
-
-getAllUsers().then((users) => {
-  console.log('All Users:', users);
-});

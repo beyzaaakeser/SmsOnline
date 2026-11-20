@@ -77,7 +77,7 @@ const OrderNavbar = () => {
             </div>
             <div className="border-t ">
               <Link
-                href={'/login'}
+                href={'/app/signin'}
                 className="flex items-center gap-3 px-8 mt-4"
               >
                 <RiLogoutBoxRLine className="text-green-500 text-xl" />
